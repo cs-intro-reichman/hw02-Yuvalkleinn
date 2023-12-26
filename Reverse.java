@@ -20,6 +20,6 @@ public class Reverse {
         
         // Print the reversed string and the middle char of the string
         System.out.println(reverseWord);
-        System.out.println("The middle character is: " + word.charAt(middleIndex-1));
+        System.out.println("The middle character is " + word.charAt(middleIndex-1));
 	}
 }
