@@ -6,23 +6,23 @@ public class Perfect {
         
         // Parse the command-line argument as an integer and declare some args
         int num = Integer.parseInt(args[0]);
-        int sum = 0;
-        String divisor = "";
+        int sum = 1;
+        String strPerfect = num + " is a perfect number since " + num + " = 1";
 
         // Iterate through potential divisors up to (num - 1) and check if i is a divisor of num
-        for (int i=1; i<num; i++) {
+        for (int i=2; i<num; i++) {
             if (num % i == 0) {
                 sum += i;
-                divisor += i + " + ";
+                strPerfect = strPerfect + " + " + i;
             }
         }
 
         // Remove the trailing " + " from the divisor string
-        divisor = divisor.substring(0, divisor.length()-3);
+        //divisor = divisor.substring(0, divisor.length()-3);
 
         // Check if the sum of divisors equals the original number
         if (sum == num) {
-            System.out.print(num + " is a perfect nubmer since " + num + " = " + divisor);
+            System.out.print(strPerfect);
         }
         else {
             System.out.println(num + " is not a perfect number");
