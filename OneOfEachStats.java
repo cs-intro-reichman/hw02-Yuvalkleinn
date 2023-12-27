@@ -9,21 +9,67 @@ import java.util.Random;
  */
 public class OneOfEachStats {
 	public static void main (String[] args) {
-		// Gets the two command-line arguments
-		int T = Integer.parseInt(args[0]);
-		int seed = Integer.parseInt(args[1]);
-		// Initailizes a random numbers generator with the given seed value
-        Random generator = new Random(seed);  
-		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
-		    
+		public static void main (String[] args) {
+			int userNum = Integer.parseInt(args[0]);
+			int seed = Integer.parseInt(args[1]);
+			int experimentsNum = 0;
+			int howManyChildrenOverAll = 0;
+			int howManyChildrenInOneFamily = 0;
+			int twoChildren = 0;
+			int threeChildren = 0;
+			int fourPlusChildren = 0;
+			boolean isGirl = false;
+			boolean isBoy = false;
+			
+			//Initailizes a random numbers generator with the given seed value
+			Random generator = new Random(seed); 
+			
+			 //simulates different cases of families until they have a boy and a girl
+			while(experimentsNum < userNum) {
+				while((isGirl && isBoy) != true) { //checks until there is a boy and a girl in the family
+					double randomGender = generator.nextDouble();;
+					if(randomGender < 0.5) {  //the chance of getting a girl [0,0.5).
+						isGirl = true;
+					}
+					else {  //the chance of getting a boy [0.5,1).
+						isBoy = true;
+					}
+					howManyChildrenOverAll++;
+					howManyChildrenInOneFamily++;
+				}
+				if(howManyChildrenInOneFamily == 2) {
+					twoChildren++;
+				}
+				else if(howManyChildrenInOneFamily == 3) {
+					threeChildren++;
+				}
+				else {
+					fourPlusChildren++;
+				}
+				experimentsNum++;
+				isGirl = false;
+				isBoy = false;
+				howManyChildrenInOneFamily = 0;	
+			}
+			
+			//calculates the average number of children in a family
+			double averageChildren = (double)howManyChildrenOverAll / (double)userNum;
+			
+			System.out.println("Average: " + averageChildren + " children to get at least one of each gender.");
+			System.out.println("Number of families with 2 children: " + twoChildren);
+			System.out.println("Number of families with 3 children: " + threeChildren);
+			System.out.println("Number of families with 4 or more children: " + fourPlusChildren);
+			
+			 //checks the most common number of children in a family
+			if(twoChildren >= threeChildren && twoChildren >= fourPlusChildren) {
+				System.out.println("The most common number of children is 2.");
+			}
+			else if(threeChildren > twoChildren && threeChildren >= fourPlusChildren) {
+				System.out.println("The most common number of children is 3.");
+			}
+			else {
+				System.out.println("The most common number of children is 4 or more.");
+			}	    
+		}
 	}
 }
