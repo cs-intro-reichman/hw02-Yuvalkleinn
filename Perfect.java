@@ -18,7 +18,7 @@ public class Perfect {
         }
 
         // Remove the trailing " + " from the divisor string
-        divisor = divisor.substring(0, divisor.length()-3);
+        divisor = divisor.substring(0, divisor.length()-2);
 
         // Check if the sum of divisors equals the original number
         if (sum == num) {
