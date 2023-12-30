@@ -5,8 +5,8 @@
 public class InOrder {
 	public static void main (String[] args) {
         // Generate the two integers
-        int num1 = (int) (Math.random()*(9)) + 1;
-        int num2 = (int) (Math.random()*(9)) + 1;
+        int num1 = (int) (Math.random()*(10));
+        int num2 = (int) (Math.random()*(10));
 
         // Print the first random integer
         System.out.print(num1 + " ");
